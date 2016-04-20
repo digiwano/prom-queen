@@ -6,7 +6,6 @@ const batch = require('./lib/batch');
 const adaptCallback = require('./lib/adapt-callback');
 const delayed = require('./lib/delayed');
 const isPromise = require('./lib/is-promise');
-const toPromise = require('./lib/to-promise');
 
 module.exports = {
   sequential,
@@ -15,5 +14,4 @@ module.exports = {
   adaptCallback,
   delayed,
   isPromise,
-  toPromise
 };
