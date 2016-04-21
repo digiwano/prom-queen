@@ -1,6 +1,6 @@
 ## prom-queen
 
-### Lightweight promise utility toolkit
+### Lightweight promise utility toolkit fit for royalty
 
 prom-queen provides a number of small helper utilities to make working in a promise-based environment more pleasant. It has no external dependencies and is built for recent/modern javascript platforms.
 
@@ -63,10 +63,10 @@ These are all aliases for `queen.repeat(() => true, proc)`. This is an infinite 
 
 ##### `queen.repeatWhile(condition, proc, opts)`
 
-Apart from `opts`, this is a synonym for `queen.repeat(condition, proc)` -- `proc` will execute repeatedly until `condition()` resolves to a non-truthy value. If `opts` is passed, it should be an object, the only supported key at the moment is 'post'. If this key is defined and a truthy value then the first call to condition() is skipped; this makes `queen.repeat(condition, proc)` and `queen.repeat(condition, proc, {post:false})` equivalent to `while (condition()) { proc() }`, while `queen.repeat(condition, proc, {post:true})` is equivalent to `do { proc() } while (condition());`.
+Apart from `opts`, this is a synonym for `queen.repeat(condition, proc)` -- `proc` will execute repeatedly until `condition()` resolves to a non-truthy value. If `opts.postCondition` (or its alias `opts.post`) is defined and truthy then the first call to condition() is skipped; this makes `queen.repeat(condition, proc)` and `queen.repeat(condition, proc, {post:false})` equivalent to `while (condition()) { proc() }`, while `queen.repeat(condition, proc, {post:true})` is equivalent to `do { proc() } while (condition());`.
 
 ##### `queen.repeatUntil(condition, proc, opts)`
-The same as `queen.repeatWhile()` with its condition negated.
+The same as `queen.repeatWhile()` except with its condition negated; proc will execute repeatedly until `condition()` resolves to a truthy value
 
 ### helper utilities:
 
