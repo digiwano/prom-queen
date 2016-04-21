@@ -17,7 +17,7 @@ This documentation refers often to a _listish_. A listish thingy is either an ar
 
   * a regular javascript Array
   * any javascript [iterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) (has a `object[Symbol.iterator]()` method which returns an iterator)
-  * an array-like object (has .length with type number, has keys `0` and `obj.length - 1`)
+  * an array-like object (has .length with type number, has keys `0` and if length != 0, `obj.length - 1`)
   * a regular javascript Object: transformed into an array for processing, transformed back into an object when resolved
   * a promise: any promise passed as a _listish_ is assumed to eventually resolve to a _listish_
 
