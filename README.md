@@ -21,7 +21,7 @@ This documentation refers often to a _listish_. A listish thingy is either an ar
   * a regular javascript Object: transformed into an array for processing, transformed back into an object when resolved
   * a promise: any promise passed as a _listish_ is assumed to eventually resolve to a _listish_
 
-Many of `prom-queen`'s utils take a `proc` argument, which is a function reference. The proc function you pass
+Many of `prom-queen`'s utils take a `proc` argument, which is a function reference. This proc function should always return a promise in some way.
 
 ## api
 
