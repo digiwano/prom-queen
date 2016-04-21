@@ -25,7 +25,6 @@ Many of `prom-queen`'s utils take a `proc` argument, which is a function referen
 
 ## api
 
-
 ### _listish_ utilities:
 
 These take all take arguments of `(listish, proc)`, and all are comparable to a promise-based map or forEach -- they run all items within the `listish` using `proc`, which is a function that takes a single element from the `listish` and must return a promise.
