@@ -1,14 +1,14 @@
 {
-  "name": "prom-queen",
-  "version": "1.0.0",
-  "description": "Royal promise utilities",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "promises"
-  ],
-  "author": "Rando Christensen <digiwano@gmail.com>",
-  "license": "ISC"
+	"name": "prom-queen",
+	"version": "1.0.0",
+	"description": "Royal promise utilities",
+	"keywords": [
+		"promises"
+	],
+	"license": "ISC",
+	"author": "Rando Christensen <digiwano@gmail.com>",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	}
 }
