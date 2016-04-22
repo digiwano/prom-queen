@@ -67,6 +67,30 @@ Apart from `opts`, this is a synonym for `queen.repeat(condition, proc)` -- `pro
 ##### `queen.repeatUntil(condition, proc, opts)`
 The same as `queen.repeatWhile()` except with its condition negated; proc will execute repeatedly until `condition()` resolves to a truthy value
 
+### task runner utilities:
+
+##### `queen.tasks(initialState, taskArray)`
+##### `queen.tasks(taskArray)`
+
+`queen.tasks` is a convenient way to run a handful of `task` functions in order, each of which will be called with a shared `state` object where they can store results and other data, and each of which should return a promise. `queen.tasks()` resolves with the final state after all of the tasks have run.
+
+If any entry in `taskArray` is itself an array, it is assumed to be an array of `task` functions, which will be run in parallel.
+
+The `state` object has one extra (non enumerable/writable/configurable) property called `set`; this is a small helper for setting things into the state. `somePromise.then(state.set('myResult'))` is equivalent to `somePromise.then(result => {state.myResult = result; })`
+
+
+A small example:
+
+```javascript
+  queen.tasks([
+    state => User.find({email:'someone@somedomain.com'}).then(state.set('user'))
+    [
+      state => Posts.count({user:state.user.id}).then(state.set('posts')),
+      state => Comments.count({user:state.user.id}).then(state.set('comments')),
+    ]
+  ]).then(results => console.log(results.user, results.posts, results.comments));
+```
+
 ### helper utilities:
 
 ##### `queen.isPromise(thingy)` ⇒ `Boolean`

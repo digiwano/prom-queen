@@ -1,7 +1,7 @@
 {
 	"name": "prom-queen",
 	"version": "1.0.0",
-	"description": "Royal promise utilities",
+	"description": "Lightweight promise utility toolkit fit for royalty",
 	"keywords": [
 		"promises"
 	],

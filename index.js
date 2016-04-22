@@ -1,10 +1,9 @@
 'use strict';
 
-const simple = require('./lib/simple');
-const repeaters = require('./lib/simple');
+const listers = require('./lib/listers');
+const repeaters = require('./lib/repeaters');
+const tasks = require('./lib/tasks');
+const utilities = require('./lib/utilities');
 
-module.exports = Object.assign({
-  sequential: require('./lib/sequential'),
-  parallel: require('./lib/parallel'),
-  batch: require('./lib/batch'),
-}, repeaters, simple);
+module.exports = Object.assign({},
+  listers, repeaters, tasks, utilities);
