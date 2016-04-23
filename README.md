@@ -60,17 +60,17 @@ In this form, `proc` will be invoked exactly `number` times (unless any invocati
 
 These are all aliases for `queen.repeat(() => true, proc)`. This is an infinite asynchronous loop which only exits if `proc()` ever rejects. In this case `repeat` will also reject, propagating the error.
 
-##### `queen.repeatWhile(condition, proc, opts)`
+##### `queen.repeatWhile(condition, proc, opts)` ⇒ `Promise`
 
 Apart from `opts`, this is a synonym for `queen.repeat(condition, proc)` -- `proc` will execute repeatedly until `condition()` resolves to a non-truthy value. If `opts.postCondition` (or its alias `opts.post`) is defined and truthy then the first call to condition() is skipped; this makes `queen.repeat(condition, proc)` and `queen.repeat(condition, proc, {post:false})` equivalent to `while (condition()) { proc() }`, while `queen.repeat(condition, proc, {post:true})` is equivalent to `do { proc() } while (condition());`.
 
-##### `queen.repeatUntil(condition, proc, opts)`
+##### `queen.repeatUntil(condition, proc, opts)` ⇒ `Promise`
 The same as `queen.repeatWhile()` except with its condition negated; proc will execute repeatedly until `condition()` resolves to a truthy value
 
 ### task runner utilities:
 
-##### `queen.tasks(initialState, taskArray)`
-##### `queen.tasks(taskArray)`
+##### `queen.tasks(initialState, taskArray)` ⇒ `Promise`
+##### `queen.tasks(taskArray)` ⇒ `Promise`
 
 `queen.tasks` is a convenient way to run a handful of `task` functions in order, each of which will be called with a shared `state` object where they can store results and other data, and each of which should return a promise. `queen.tasks()` resolves with the final state after all of the tasks have run.
 
@@ -99,8 +99,10 @@ A small example:
 ##### `queen.delayed(ms, val)` ⇒ `Promise`
   * returns a promise that resolves with `val` after `ms` milliseconds. Quick hack and available elsewhere but tiny and was useful during prototyping so was left in.
 
-##### `queen.cb(resolve, reject)` ⇒ `(error, callback) => {}`
-  * A lot of promise utility libraries have some convoluted way of turning a callback-based api into, but they all seem awkward. Instead of constructing a promise for you, this helper only takes care of the callback boilerplate, allowing the following pattern:
+### utilities for dealing with callback apis
+
+##### `queen.cb(resolve, reject)` ⇒ `(error, result) => null`
+  * simple util for dealing with callbacks. This transforms a resolve/reject pair into a callback function of (roughly) the form `(error, result) => { if (error) { return reject(error); } return resolve(result); }`
 ```javascript
     function read(file) {
       return new Promise((resolve, reject) => {
@@ -108,3 +110,6 @@ A small example:
       });
     }
 ```
+
+##### `queen.call(obj, method, argsArray)` ⇒ `Promise`
+  * wraps a single call of a single method in a promise: `queen.call(fs, 'readFile', ['package.json', 'utf8']).then(JSON.parse)`
