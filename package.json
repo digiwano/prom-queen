@@ -1,15 +1,15 @@
 {
-	"name": "prom-queen",
-	"version": "1.0.0",
-	"description": "Lightweight promise utility toolkit fit for royalty",
-	"keywords": [
-		"promises"
-	],
-	"license": "ISC",
-	"author": "Rando Christensen <digiwano@gmail.com>",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"i forgot how to write tests\" && exit 1",
+  "name": "prom-queen",
+  "version": "1.0.1",
+  "description": "Lightweight promise utility toolkit fit for royalty",
+  "keywords": [
+    "promises"
+  ],
+  "license": "ISC",
+  "author": "Rando Christensen <digiwano@gmail.com>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"i forgot how to write tests\" && exit 1",
     "postversion": "git push && git push --tags && npm publish"
-	}
+  }
 }
