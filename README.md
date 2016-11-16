@@ -111,5 +111,17 @@ A small example:
     }
 ```
 
+##### `queen.adapt(func) ⇒ `Promise`
+  * very light wrapper around `queen.cb()` above, creates a promise and calls the passed function with a callback which triggers the rejection or resolution of the returned promise.
+  * used for adapting callback-based code into promises
+```javascript
+
+// run a callback-taking function (similar to call below)
+queen.adapt(callback => fs.readFile(file, 'utf8', callback)).then(contents => console.log("my contents are", contents));
+
+// wrap a callback-taking function
+const _readFile = (fn, opts) => queen.adapt(cb => fs.readFile(fn, opts, cb));
+```
+
 ##### `queen.call(obj, method, argsArray)` ⇒ `Promise`
   * wraps a single call of a single method in a promise: `queen.call(fs, 'readFile', ['package.json', 'utf8']).then(JSON.parse)`
